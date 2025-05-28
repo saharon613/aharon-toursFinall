@@ -41,8 +41,7 @@ public class TourDetailsFrame extends JFrame {
             for (String artworkTitle : tour.artworkTitles) {
                 controller.getImage(artworkTitle, detailsPanel);
             }
-        }
-        else {
+        } else {
             addField(detailsPanel, "No Artwork Titles Provided");
         }
 
