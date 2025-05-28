@@ -13,7 +13,7 @@ public class TourDetailsFrame extends JFrame {
         this.controller = controller;
 
         setTitle(tour.title);
-        setSize(600, 700);
+        setSize(800, 900);
         setLayout(new BorderLayout());
 
         JPanel imagePanel = new JPanel();
@@ -21,7 +21,7 @@ public class TourDetailsFrame extends JFrame {
 
         try {
             Image image = ImageIO.read(new URL(tour.image));
-            Image scaledImage = image.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+            Image scaledImage = image.getScaledInstance(500, 400, Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(scaledImage);
             JLabel imageLabel = new JLabel(icon);
             imagePanel.add(imageLabel, BorderLayout.CENTER);
@@ -37,8 +37,8 @@ public class TourDetailsFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(detailsPanel);
         add(scrollPane, BorderLayout.CENTER);
 
-        if (tour.artwork_titles != null && !tour.artwork_titles.isEmpty()) {
-            for (String artworkTitle : tour.artwork_titles) {
+        if (tour.artworkTitles != null && !tour.artworkTitles.isEmpty()) {
+            for (String artworkTitle : tour.artworkTitles) {
                 controller.getImage(artworkTitle, detailsPanel);
             }
         }

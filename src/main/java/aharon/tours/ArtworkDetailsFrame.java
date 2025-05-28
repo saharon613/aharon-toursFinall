@@ -9,17 +9,17 @@ import java.net.URL;
 public class ArtworkDetailsFrame extends JFrame {
     public ArtworkDetailsFrame(Artwork artwork) {
         setTitle(artwork.title);
-        setSize(400, 500);
+        setSize(600, 700);
         setLayout(new BorderLayout());
 
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new BorderLayout());
 
-        String imageUrl = "https://www.artic.edu/iiif/2/" + artwork.image_id + "/full/843,/0/default.jpg";
+        String imageUrl = "https://www.artic.edu/iiif/2/" + artwork.imageId + "/full/843,/0/default.jpg";
 
         try {
             Image originalImage = ImageIO.read(new URL(imageUrl));
-            Image scaledImage = originalImage.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+            Image scaledImage = originalImage.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(scaledImage);
             JLabel imageLabel = new JLabel(icon);
             imagePanel.add(imageLabel, BorderLayout.CENTER);

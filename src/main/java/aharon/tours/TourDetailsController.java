@@ -30,7 +30,7 @@ public class TourDetailsController {
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(Schedulers.from(SwingUtilities::invokeLater))
                                 .subscribe(detailsResponse -> {
-                                    String imageId = detailsResponse.data.image_id;
+                                    String imageId = detailsResponse.data.imageId;
                                     String artworkTitle = detailsResponse.data.title;
                                     Artwork artwork = detailsResponse.data;
 
@@ -49,7 +49,7 @@ public class TourDetailsController {
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.from(SwingUtilities::invokeLater))
                 .subscribe(image -> {
-                    Image scaled = image.getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                    Image scaled = image.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
                     JLabel imageLabel = new JLabel(new ImageIcon(scaled));
                     JLabel titleLabel = new JLabel(artwork.title, SwingConstants.CENTER);
 
