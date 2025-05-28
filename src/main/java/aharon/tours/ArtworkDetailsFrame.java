@@ -37,8 +37,8 @@ public class ArtworkDetailsFrame extends JFrame {
         }
 
         if (artwork.description != null && !artwork.description.isEmpty()) {
-            JTextArea area = new JTextArea("Description: " + artwork.description.replaceAll("<[^>]*>",
-                    ""));
+            JTextArea area = new JTextArea("Description: "
+                    + artwork.description.replaceAll("<[^>]*>", ""));
             area.setLineWrap(true);
             area.setWrapStyleWord(true);
             area.setEditable(false);

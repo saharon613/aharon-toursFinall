@@ -35,8 +35,8 @@ public class TourDetailsController {
                                     Artwork artwork = detailsResponse.data;
 
                                     if (imageId != null) {
-                                        String imageUrl = "https://www.artic.edu/iiif/2/" + imageId +
-                                                "/full/843,/0/default.jpg";
+                                        String imageUrl = "https://www.artic.edu/iiif/2/" + imageId
+                                                + "/full/843,/0/default.jpg";
                                         loadImage(imageUrl, artwork, panel);
                                     }
                                 }, Throwable::printStackTrace);
