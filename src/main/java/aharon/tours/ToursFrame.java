@@ -15,7 +15,7 @@ public class ToursFrame extends JFrame {
 
         for (int i = 0; i < panels.length; i++) {       // creates the panels
             panels[i] = new JPanel();
-            panels[i].setLayout(new BoxLayout(panels[i], BoxLayout.Y_AXIS));    // makes each panel a vertical box layout
+            panels[i].setLayout(new BoxLayout(panels[i], BoxLayout.Y_AXIS)); // makes each panel a vertical box layout
             JLabel imageLabel = new JLabel();
             JLabel titleLabel = new JLabel();
             panels[i].add(imageLabel);  // adds tour image to the panel

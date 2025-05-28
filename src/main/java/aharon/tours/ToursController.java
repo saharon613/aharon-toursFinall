@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ToursController {
 
     private static final Logger logger = Logger.getLogger(
-            ToursController.class.getName());        // logs the name of the class that has the error
+            ToursController.class.getName());
 
     private ToursService service;
     private JPanel[] panels;
@@ -28,25 +28,20 @@ public class ToursController {
         this.detailsController = detailsController;
     }
 
-
     public void display() {
-        // This will make a request for the ProductResponse on a separate Thread so that it wont have to wait for it to finish in order to continue
         Disposable disposable = service.getTours()
-                // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
-                // tells Rx to handle the response on Swing's main Thread- tells it to call the handleResponse method- and do it on the main thread
                 .observeOn(Schedulers.from(SwingUtilities::invokeLater))
-                //.observeOn(AndroidSchedulers.mainThread()) // Instead use this on Android only
                 .subscribe(
-                        (response) -> handleResponse(response), // if you have a response call the handle response method
-                        Throwable::printStackTrace);        // if it doesn't get a response do this
+                        (response) -> handleResponse(response),
+                        Throwable::printStackTrace);
     }
 
     private void handleResponse(ToursResponse response) {
         for (int i = 0; i < panels.length; i++) {
             final Tour tour = response.data[i];
             final JPanel panel = panels[i];
-            final JLabel imageLabel = (JLabel) panel.getComponent(0);   // gets the first element of the panel - here its the image
+            final JLabel imageLabel = (JLabel) panel.getComponent(0);
             final JLabel titleLabel = (JLabel) panel.getComponent(1);
 
             panel.putClientProperty("tour", tour);
@@ -71,17 +66,14 @@ public class ToursController {
     private void downloadImage(Tour tour, JLabel label) {
         Disposable disposable = Single.fromCallable((Callable<Image>) () -> {
                     logger.info("Downloading thumbnail " + tour.title);
-                    //Thread.sleep(new Random().nextInt(5) * 1000);
                     URL url = new URL(tour.image);
                     return ImageIO.read(url);
                 })
                 .subscribeOn(Schedulers.io())
-                // tells Rx to handle the response on Swing's main Thread- tells it to call the handleResponse method- and do it on the main thread
                 .observeOn(Schedulers.from(SwingUtilities::invokeLater))
-                //.observeOn(AndroidSchedulers.mainThread()) // Instead use this on Android only
                 .subscribe(
-                        (image) -> handleImage(label, image), // if you have a response call the handle response method
-                        Throwable::printStackTrace);        // if it doesn't get a response do this
+                        (image) -> handleImage(label, image),
+                        Throwable::printStackTrace);
     }
 
     private void handleImage(JLabel label, Image image) {

@@ -1,8 +1,5 @@
 package aharon.tours;
 
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -40,8 +37,8 @@ public class TourDetailsFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(detailsPanel);
         add(scrollPane, BorderLayout.CENTER);
 
-        if (tour.artwork_titles != null && !tour.artwork_titles.isEmpty()) {
-            for (String artworkTitle : tour.artwork_titles) {
+        if (tour.artworkTitles != null && !tour.artworkTitles.isEmpty()) {
+            for (String artworkTitle : tour.artworkTitles) {
                 controller.getImage(artworkTitle, detailsPanel);
             }
         }
