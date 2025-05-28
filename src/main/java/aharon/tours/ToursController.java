@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class ToursController {
 
     private static final Logger logger = Logger.getLogger(
-            ToursController.class.getName());
+            ToursController.class.getName());        // logs the name of the class that has the error
 
     private ToursService service;
     private JPanel[] panels;
@@ -27,6 +27,7 @@ public class ToursController {
         this.service = service;
         this.detailsController = detailsController;
     }
+
 
     public void display() {
         Disposable disposable = service.getTours()

@@ -37,11 +37,12 @@ public class TourDetailsFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(detailsPanel);
         add(scrollPane, BorderLayout.CENTER);
 
-        if (tour.artworkTitles != null && !tour.artworkTitles.isEmpty()) {
-            for (String artworkTitle : tour.artworkTitles) {
+        if (tour.artwork_titles != null && !tour.artwork_titles.isEmpty()) {
+            for (String artworkTitle : tour.artwork_titles) {
                 controller.getImage(artworkTitle, detailsPanel);
             }
-        } else {
+        }
+        else {
             addField(detailsPanel, "No Artwork Titles Provided");
         }
 

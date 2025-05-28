@@ -15,7 +15,7 @@ public class ArtworkDetailsFrame extends JFrame {
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new BorderLayout());
 
-        String imageUrl = "https://www.artic.edu/iiif/2/" + artwork.imageId + "/full/843,/0/default.jpg";
+        String imageUrl = "https://www.artic.edu/iiif/2/" + artwork.image_id + "/full/843,/0/default.jpg";
 
         try {
             Image originalImage = ImageIO.read(new URL(imageUrl));
